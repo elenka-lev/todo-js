@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Olena Sorokina" />
+    <link rel="icon" href="./favicon.ico/centang.svg" type="image/svg+xml" />
+    <title>SparkList</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+
+    <link rel="stylesheet" href="profile.css">
+    <script type="module" src="profile.js"></script>
+</head>
+<body>
+    <main>
+      <div class="container">
+
+      <section>
+        <div class="wrapper">
+          <button type="button" class="logout">Logout</button>
+           <div class="wrap-search">
+              <input class="input-search" name="search" type="text" placeholder="Search by title......">
+              <button type="button" class="button-search">
+                <svg widht="70" height="66">
+                  <use href="icons/search.svg"/>
+                </svg>
+              </button>
+           </div>
+           <select id="category-filter" name="category-filter">
+                    <option value="choose">All</option>
+                    <option value="home">Home</option>
+                    <option value="work">Work</option>
+                    <option value="study">Study</option>
+                    
+                  </select>
+  
+           <form action="get" class="form">
+            <div class="items-todo">
+              
+              <div class="items-title">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title">
+              </div>
+              
+              <div class="items-category">
+               <div class="options">
+                 <label for="category-select">category</label> 
+                  <select id="category-select" name="category">
+                    <option value="choose">-- Choose a category --</option>
+                    <option value="home">Home</option>
+                    <option value="work">Work</option>
+                    <option value="study">Study</option>
+                    
+                  </select>
+               </div>
+                
+               <div class="date">
+                  <label for="datepicker">date</label>
+                  <input type="text" id="datepicker" >
+                </div>
+              </div>
+            </div>
+  
+            <button type="submit" class="btn-submit">OK</button>
+           </form>
+  
+          
+        </div>
+      </section>
+
+      <section class="todo-list">
+        
+          <h2>{All category}</h2>
+          <ul class="todo-items">
+            <li class="item">
+              <div class="todo-header">
+                <h3>{Category}</h3>
+                <a href="edit.html" class="btn-edit">
+                  <svg widht="40" height="40">
+                    <use href="icons/edit.svg"/>
+                  </svg>
+                </a>
+              </div>
+              <div class="todo-text">
+                <p class="text">{text tasks}</p>
+              </div>
+              <div class="control">
+                <div class="check">
+                  <input type="checkbox" id="btn-ok" hidden/>
+                  <label for="btn-ok"></label>
+                </div>
+                <button type="button" class="delete">
+                  <svg widht="40" height="40">
+                    <use href="icons/delete.svg"/>
+                  </svg>
+                </button>
+              </div>
+            </li>
+          </ul>
+      </section>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+</body>
+</html>

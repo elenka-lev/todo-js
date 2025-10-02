@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Olena Sorokina" />
+    <link rel="icon" href="./favicon.ico/centang.svg" type="image/svg+xml" />
+    <title>SparkList</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="main.js"></script>
+  </head>
+  <body>
+    <!--Modal-->
+    <div class="modal" id="auth-modal">
+      <div class="modal-content">
+      <button class="close" onclick="closeModal('auth-modal')">&times;</button>
+
+    <!--Login form -->
+    <form id="login-form" class="form">
+      <div class="form-wrap">
+        <h2 class="form-title">Log In</h2>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+        <div class="reg"><p>Don't have account? <button href="#" class="go-reg" onclick="switchForm('register')">Sign up</button></p></div>
+      </div>
+    </form>
+
+    <!--Sign up form -->
+    
+      <form id="register-form" class="form ">
+        <div class="form-wrap">
+        <h2 class="form-title">Sign up</h2>
+        <input type="text" placeholder="Username" required>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit">Sign Up</button>
+        <div class="reg"><p>Already have an account? <button class="go-reg" onclick="switchForm('login')">Login</button></p></div>
+         </div>
+      </form>
+   
+  </div>
+</div>
+
+    <main>
+      
+        <section class="lobby">
+            <header>
+                <nav>
+                    <ul class="menu">
+                        <li><button type="button" class="login">Login</button></li>
+                        <li><button type="button" class="sign-up">Sign up</button></li>
+                    </ul>
+                </nav>
+            </header>
+        </section>
+    </main>
+  </body>
+</html>
