@@ -5,7 +5,7 @@ const registerForm = document.getElementById("register-form");
 const loginBtn = document.querySelector(".login");
 const signUpBtn = document.querySelector(".sign-up");
 const closeBtn = document.querySelector(".close");
-
+const goReg = document.querySelectorAll(".go-reg");
 // open modal / відкриваємо модальне вікно
 function openModal(formType) {
   modal.classList.add("active");
@@ -44,6 +44,15 @@ loginBtn.addEventListener("click", () => openModal("login"));
 signUpBtn.addEventListener("click", () => openModal("register"));
 closeBtn.addEventListener("click", closeModal);
 
+
+/*switching between forms / перемикання між формами*/
+document.querySelectorAll(".go-reg").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const type = btn.dataset.form; // "register" или "login"
+    switchForm(type);
+  });
+});
 // movement within the modal / переміщення в модалці "Sign up" и "Login"
 document.querySelectorAll(".go-reg").forEach((btn) => {
   btn.addEventListener("click", (e) => {
