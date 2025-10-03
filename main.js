@@ -28,7 +28,7 @@ function closeModal() {
 }
 
 // choose modal / перемикаємося між модальнимі вікнами
-function switchForm(type) {
+export function switchForm(type) {
   loginForm.classList.remove("isActive");
   registerForm.classList.remove("isActive");
 
@@ -53,3 +53,4 @@ document.querySelectorAll(".go-reg").forEach((btn) => {
   });
 });
 /*modal ended*/
+

@@ -96,6 +96,10 @@ input {
         border-radius: 30px;
         box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
         margin-bottom: 30px;
+        transition: all .3s ease;
+        }
+        button[type='submit']:hover {
+            background-color: var(--blue);
         }
 }
 .form-wrap {
@@ -107,6 +111,8 @@ input {
 }
 .reg {
     margin: 0 auto;
+    display: flex;
+    gap: 10px;
     button {
         background-color: var(--yellow);
         color:var(--blue);
