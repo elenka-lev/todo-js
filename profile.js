@@ -25,7 +25,7 @@ logout.addEventListener('click', e => {
 const nameUser = document.querySelector(".username");
 const currentUserEmail = localStorage.getItem("currentUser");
 const users = JSON.parse(localStorage.getItem("users")) || [];
-
+const currentUser = users.find((u) => u.useremail === currentUserEmail);
 if (currentUserEmail) {
   const user = users.find((u) => u.useremail === currentUserEmail);
   if (user) {
@@ -37,7 +37,7 @@ const searchInput = document.querySelector('.input-search');
 const select = document.querySelector("#category-filter");
 const form = document.querySelector('.form');
 const todoList = document.querySelector('.todo-items');
-let tasks = [];
+let tasks = currentUser?.tasks || [];
 
 loadTasks();
 showTasks();
@@ -71,6 +71,7 @@ select.addEventListener("change", (e) => {
 function addTask(task) {
   task.done = false;
   tasks.push(task);
+  saveTasks();
 }
 
 function showTasks(query='', category='') {
@@ -124,9 +125,17 @@ function loadTasks() {
 }
 
 function saveTasks() {
-  const json = JSON.stringify(tasks);
+  if (!currentUser) return;
+
+  currentUser.tasks = tasks;
+
+  const userIndex = users.findIndex((u) => u.useremail === currentUserEmail);
+  users[userIndex] = currentUser;
+
+  localStorage.setItem("users", JSON.stringify(users));
+  // const json = JSON.stringify(tasks);
   
-  localStorage.tasks = json;
+  // localStorage.tasks = json;
 }
 
 todoList.addEventListener('change', e => {
@@ -172,7 +181,7 @@ todoList.addEventListener('click', e => {
   deleteTasks(i);
   saveTasks();
 
-    const query = searchInput.value;
+  const query = searchInput.value;
   const category = select.value;
   showTasks(query, category);
 
