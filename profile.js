@@ -20,6 +20,18 @@ logout.addEventListener('click', e => {
   window.location.href = "index.html";
 })
 
+
+/*add user*/
+const nameUser = document.querySelector(".username");
+const currentUserEmail = localStorage.getItem("currentUser");
+const users = JSON.parse(localStorage.getItem("users")) || [];
+
+if (currentUserEmail) {
+  const user = users.find((u) => u.useremail === currentUserEmail);
+  if (user) {
+    nameUser.textContent = user.username;
+  }
+}
 /*Add tasks*/
 const searchInput = document.querySelector('.input-search');
 const select = document.querySelector("#category-filter");

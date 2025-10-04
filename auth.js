@@ -39,7 +39,8 @@ loginForm.addEventListener('submit', e => {
     const savedUser = users.find((user) => user.useremail === loginData.useremail && user.pswrd === loginData.pswrd
  );
 
- if (savedUser) {
+  if (savedUser) {
+   localStorage.setItem("currentUser", savedUser.useremail);
    alert("Welcome, " + savedUser.username + "!");
    window.location.href = "profile.html";
  } else {
