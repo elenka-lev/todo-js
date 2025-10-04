@@ -21,7 +21,8 @@ logout.addEventListener('click', e => {
 })
 
 /*Add tasks*/
-
+const searchInput = document.querySelector('.input-search');
+const select = document.querySelector("#category-filter");
 const form = document.querySelector('.form');
 const todoList = document.querySelector('.todo-items');
 let tasks = [];
@@ -35,19 +36,42 @@ form.addEventListener('submit', e => {
   const task = Object.fromEntries(new FormData(form));
   addTask(task);
   saveTasks();
-  showTasks();
+
+  const query = searchInput.value;
+  const category = select.value;
+  showTasks(query, category);
+
   form.reset();
 })
+
+searchInput.addEventListener('input', e => {
+  const query = searchInput.value;
+  const category = select.value;
+  showTasks(query, category);
+})
+
+select.addEventListener("change", (e) => {
+  const query = searchInput.value;
+  const category = select.value;
+  showTasks(query, category);
+});
 
 function addTask(task) {
   task.done = false;
   tasks.push(task);
 }
 
-function showTasks() {
+function showTasks(query='', category='') {
   let html = '';
+  let tasksToShow = tasks;
 
-  tasks.forEach(task => {
+  if (query) {
+    tasksToShow = tasksToShow.filter(task => task.title.includes(query))
+  }
+  if (category) {
+    tasksToShow = tasksToShow.filter(task => task.category == category)
+  }
+  tasksToShow.forEach(task => {
     html += `
       <li class="item">
         <div class="todo-header">
@@ -125,4 +149,23 @@ function toggleTaskStatus(i, status) {
 
 function setTaskToEditIndex(i) {
   localStorage.taskToEdit = i;
+}
+
+todoList.addEventListener('click', e => {
+  const btn = e.target.closest('.delete');
+  if (!btn) return;
+  const li = btn.closest('.item');
+  const i = getIndex(li);
+
+  deleteTasks(i);
+  saveTasks();
+
+    const query = searchInput.value;
+  const category = select.value;
+  showTasks(query, category);
+
+})
+
+function deleteTasks(i) {
+  tasks.splice(i, 1);
 }

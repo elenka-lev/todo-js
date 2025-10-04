@@ -23,7 +23,9 @@
           <div class="title-edit">
             <h2>Edit</h2>
           </div>
-          <form action="get" class="form">
+          <form action="" class="form">
+            <input type="hidden" name="index">
+            
             <div class="items-todo">
               <div class="items-title">
                 <label for="title">Title</label>
@@ -34,7 +36,7 @@
                 <div class="options">
                   <label for="category-select">category</label>
                   <select id="category-select" name="category">
-                    <option value="choose">-- Choose a category --</option>
+                    <option value="">-- Choose a category --</option>
                     <option value="home">Home</option>
                     <option value="work">Work</option>
                     <option value="study">Study</option>
@@ -43,7 +45,7 @@
 
                 <div class="date">
                   <label for="datepicker">date</label>
-                  <input type="text" id="datepicker" />
+                  <input type="text" id="datepicker" name="date"/>
                 </div>
               </div>
             </div>
