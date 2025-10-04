@@ -267,12 +267,7 @@ h3 {
     width: 40px;
     height: 40px;
 }
-.btn-ok {
-    border-radius: 50%;
-    background-color: var(--brown);
-
-}
-label[for="btn-ok"] {
+.check>label {
     border-radius: 99px;
     display: inline-block;
     width: 40px;
@@ -280,7 +275,7 @@ label[for="btn-ok"] {
     background-image: url('icons/ok.svg');
 }
 
-#btn-ok:checked+label {
+.check>label:has(:checked) {
     content: "";
     display: block;
     width: 40px;
